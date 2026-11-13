@@ -1,0 +1,26 @@
+{
+  "servers": {
+    "filesystem": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "C:\\"]
+    },
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": { "Authorization": "Bearer ${input:github_token}" }
+    },
+    "internal-wiki": {
+      "type": "http",
+      "url": "https://mcp.internal-wiki.example.com/mcp"
+    }
+  },
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "github_token",
+      "description": "GitHub personal access token",
+      "password": true
+    }
+  ]
+}
