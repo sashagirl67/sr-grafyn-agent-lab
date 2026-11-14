@@ -1,8 +1,7 @@
 """
 Legacy MCP helper — NOT imported or used by any agent in this repo.
 
-Kept on purpose to test whether discovery reports unused MCP code as an active
-MCP connection (the false positive seen with the AgentCore project template).
+.
 """
 from mcp import ClientSession
 from mcp.client.streamable_http import streamablehttp_client

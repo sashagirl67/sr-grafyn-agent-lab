@@ -1,8 +1,6 @@
 """
 Finance assistant agent (LangGraph + OpenAI + MCP + Pinecone).
 
-TEST REPO for Grafyn discovery. This code is not meant to be run; every endpoint,
-index and key is a placeholder. What matters is what a scanner can infer from it:
 
   - Model:      OpenAI gpt-4.1-mini (via langchain-openai)
   - MCP:        two MCP servers, actually wired into the agent
@@ -15,10 +13,10 @@ index and key is a placeholder. What matters is what a scanner can infer from it
 import asyncio
 import os
 
+from langchain.agents import create_agent
 from langchain_core.tools import tool
 from langchain_mcp_adapters.client import MultiServerMCPClient
 from langchain_openai import ChatOpenAI
-from langgraph.prebuilt import create_react_agent
 from pinecone import Pinecone
 
 from config.settings import PINECONE_API_KEY, PINECONE_INDEX
@@ -66,10 +64,10 @@ async def build_agent():
     mcp_client = MultiServerMCPClient(MCP_SERVERS)
     mcp_tools = await mcp_client.get_tools()
     llm = ChatOpenAI(model=MODEL, temperature=0)
-    return create_react_agent(
-        llm,
+    return create_agent(
+        model=llm,
         tools=[search_customer_records, get_account_balance, *mcp_tools],
-        prompt=SYSTEM_PROMPT,
+        system_prompt=SYSTEM_PROMPT,
     )
 
 

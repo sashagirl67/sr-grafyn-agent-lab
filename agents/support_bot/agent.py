@@ -1,7 +1,6 @@
 """
 Support bot agent (Strands + Anthropic Claude on Amazon Bedrock).
 
-TEST REPO for Grafyn discovery. Not meant to be run.
 
   - Model:      Claude Sonnet on Amazon Bedrock (via Strands BedrockModel)
   - MCP:        none (this agent uses only local tools)
